@@ -131,8 +131,8 @@ class Equation {
 
   printResult() {
 
-    const end  = this.tableWidth - 1;
-    const start = end - this.tableHeight + 1;
+    const end  = this.tableWidth;
+    const start = end - this.tableHeight;
 
     let values = this.objectiveRow.slice(start, end).map((val) => {
       const num = Number(Math.abs(val))
@@ -142,7 +142,11 @@ class Equation {
     const res = {};
 
     values.map((el, index) => {
-      res['x'+index] = el;
+      if(index < values.length - 1) {
+        res['x'+index] = el;
+      } else {
+        res['Value of objective function'] = el;
+      }
     })
 
     console.table(res);
