@@ -31,21 +31,6 @@ class Equation {
     })
   }
 
-  _indexOfMin(numbers) {
-
-    let smallest = Infinity;
-    let index = 0;
-
-    numbers.map((num, i) => {
-      if (num < smallest) {
-        smallest = num;
-        index = i;
-      };
-    });
-
-    return index;
-  }
-
   transpose() {
     let table = new Array(this.tableWidth).fill(1);
     table = table.map((_) => {
@@ -174,12 +159,13 @@ class Equation {
   }
 
   get pivotRowIndex() {
-    return this._indexOfMin(this.mostLimitingValues);
+    const f = Math.min(...this.mostLimitingValues);
+    return this.mostLimitingValues.indexOf(f);
   }
 
   get mostLimitingValues() {
     const mostLimitingValues = this.constraintResults.map((constraintResult, row) => {
-      if(constraintResult === 0) {
+      if(this.table[row][this.pivotColIndex] < 0 || constraintResult === 0) {
         return Infinity;
       }
       return (constraintResult / this.table[row][this.pivotColIndex]);

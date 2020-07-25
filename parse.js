@@ -5,7 +5,7 @@ const constrainsRHSRegex = /(?:[>=] ([0-9]*))/;
 const objectiveFnRegex = /(?:[min\:] (.*))/;
 const objectiveFactorRegex = constrainsRowRegex;
 
-const factorRegex = /([+-]) ([0-9])*/;
+const factorRegex = /([+-]) ([0-9]*)/;
 
 let line = -1;
 const lineNum = () => {

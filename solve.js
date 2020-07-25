@@ -17,7 +17,7 @@ const run = async () => {
     }
 
     let step = 0;
-    while(!eq.isSolved && step <= 50) {
+    while(!eq.isSolved) {
       step++;
       eq.reduce();
       
